@@ -52,9 +52,9 @@ void setup() {
     esp_sleep_wakeup_cause_t wakeup_reason;
     wakeup_reason = esp_sleep_get_wakeup_cause();
     if (wakeup_reason == ESP_SLEEP_WAKEUP_TIMER) {
-      Wire1.begin(21, 22);
+      Wire1.begin(21, 22);  // AXP192向けI2C初期化
       Wire1.setClock(400000);
-      M5.Lcd.begin();
+      M5.Lcd.begin(); // LCDだけ初期化
     } else {
       M5.begin(true, true, false);
       M5.Axp.ScreenBreath(7);    // 画面の輝度を下げる
